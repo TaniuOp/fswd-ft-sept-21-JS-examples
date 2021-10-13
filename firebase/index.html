@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase</title>
+</head>
+<body>
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getFirestore, setDoc, doc, addDoc, collection, deleteDoc, getDoc, getDocs, query } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+
+
+    const firebaseConfig = {
+      // Insertar aquí vuestra configuración del proyecto
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Seteamos el usuario
+
+    // await setDoc(doc(db, "cities", "NY"), {
+    //   name: "Nueva Yorks",
+    //   state: "NY",
+    //   country: "USA"
+    // });
+
+    // Añadimos un nuevo registro a la colección con un id.
+
+    // const docRef = await addDoc(collection(db, "youtubers"), {
+    //   name: "Ruben la has liado",
+    //   country: "Spain"
+    // });
+    // console.log("Document written with ID: ", docRef.id);
+
+    // Borramos un registro
+
+    // await deleteDoc(doc(db, "cities", "LA"));
+
+    // Leemos un registro
+
+    // const docRefs = doc(db, "cities", "SF");
+    // const docSnap = await getDoc(docRefs);
+    // if (docSnap.exists()) {
+    //   console.log("Document data:", docSnap.data());
+    // } else {
+    //   // doc.data() will be undefined in this case
+    //   console.log("No such document!");
+    // }
+
+    // Leemos una colección
+
+    // const q = query(collection(db, "cities"));
+
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
+    //   console.log(doc.id, " => ", doc.data());
+    // });
+
+  </script>
+ 
+  
+</body>
+</html>
