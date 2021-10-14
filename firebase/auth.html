@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase</title>
+</head>
+<body>
+  <h2>SingUp</h2>
+  <input type="email" name="" id="email" autocomplete="off" />
+  <input type="password" name="" id="pass" />
+  <button id="singup">sing up</button>
+
+  <h2>SingIn</h2>
+  <input type="email" name="" id="emaillogin" autocomplete="off" />
+  <input type="password" name="" id="passlogin" />
+  <button id="login">Login</button>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+    
+    const firebaseConfig = {
+      //aquí vuestra configuración
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    
+    
+    document.getElementById("singup").addEventListener("click", ()=> {
+      const email = document.getElementById("email").value
+      const password = document.getElementById("pass").value
+      
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("create")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMessage)
+        });
+    })
+    
+    document.getElementById("login").addEventListener("click", () => {
+      const email = document.getElementById("emaillogin").value
+      const password = document.getElementById("passlogin").value
+    
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("login")
+          window.open("https://thebridge.tech", "_blank")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMessage)
+        });
+    })
+
+  </script>
+ 
+  
+</body>
+</html>
